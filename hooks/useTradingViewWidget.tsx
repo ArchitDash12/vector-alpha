@@ -21,6 +21,9 @@ const useTradingViewWidget = (scriptUrl: string, config: Record<string, unknown>
     script.src = scriptUrl;
     script.async = true;
     script.innerHTML = JSON.stringify(config);
+    script.onerror = () => {
+      widgetContainer.textContent = "Market data is unavailable. Reload the page to try again.";
+    };
 
     container.appendChild(script);
     container.dataset.loaded = 'true'
