@@ -42,7 +42,7 @@ const SignUp = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <InputField 
-                name="fullname"
+                name="fullName"
                 label="Full Name"
                 placeholder="John Doe"
                 register={register}
