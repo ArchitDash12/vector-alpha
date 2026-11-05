@@ -25,30 +25,37 @@ export function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-// Formatted string like "$3.10T", "$900.00B", "$25.00M" or "$999,999.99"
-export function formatMarketCapValue(marketCapUsd: number): string {
-  if (!Number.isFinite(marketCapUsd) || marketCapUsd <= 0) return 'N/A';
+// Formatted string like "₹3.10T", "₹900.00B", "₹25.00M" or "₹999,999.99"
+export function formatMarketCapValue(marketCap: number): string {
+  if (!Number.isFinite(marketCap) || marketCap <= 0) return 'N/A';
 
-  if (marketCapUsd >= 1e12) return `$${(marketCapUsd / 1e12).toFixed(2)}T`; // Trillions
-  if (marketCapUsd >= 1e9) return `$${(marketCapUsd / 1e9).toFixed(2)}B`; // Billions
-  if (marketCapUsd >= 1e6) return `$${(marketCapUsd / 1e6).toFixed(2)}M`; // Millions
-  return `$${marketCapUsd.toFixed(2)}`; // Below one million, show full USD amount
+  if (marketCap >= 1e12) return `₹${(marketCap / 1e12).toFixed(2)}T`; // Trillions
+  if (marketCap >= 1e9) return `₹${(marketCap / 1e9).toFixed(2)}B`; // Billions
+  if (marketCap >= 1e6) return `₹${(marketCap / 1e6).toFixed(2)}M`; // Millions
+  return `₹${marketCap.toFixed(2)}`; // Below one million, show full INR amount
 }
+
+const formatISTDateString = (date: Date) =>
+  new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Kolkata',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(date);
 
 export const getDateRange = (days: number) => {
   const toDate = new Date();
   const fromDate = new Date();
   fromDate.setDate(toDate.getDate() - days);
   return {
-    to: toDate.toISOString().split('T')[0],
-    from: fromDate.toISOString().split('T')[0],
+    to: formatISTDateString(toDate),
+    from: formatISTDateString(fromDate),
   };
 };
 
-// Get today's date range (from today to today)
+// Get today's date range in IST (from today to today)
 export const getTodayDateRange = () => {
-  const today = new Date();
-  const todayString = today.toISOString().split('T')[0];
+  const todayString = getTodayString();
   return {
     to: todayString,
     from: todayString,
@@ -76,8 +83,14 @@ export const calculateNewsDistribution = (symbolsCount: number) => {
 export const validateArticle = (article: RawNewsArticle) =>
     article.headline && article.summary && article.url && article.datetime;
 
-// Get today's date string in YYYY-MM-DD format
-export const getTodayString = () => new Date().toISOString().split('T')[0];
+// Get today's date string in YYYY-MM-DD format (IST)
+export const getTodayString = () =>
+  new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Kolkata',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
 
 export const formatArticle = (
     article: RawNewsArticle,
@@ -109,31 +122,38 @@ export const getChangeColorClass = (changePercent?: number) => {
 };
 
 export const formatPrice = (price: number) => {
-  return new Intl.NumberFormat('en-US', {
+  return new Intl.NumberFormat('en-IN', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'INR',
     minimumFractionDigits: 2,
   }).format(price);
 };
 
-export const formatDateToday = new Date().toLocaleDateString('en-US', {
+export const formatDateToday = new Date().toLocaleDateString('en-IN', {
   weekday: 'long',
   year: 'numeric',
   month: 'long',
   day: 'numeric',
-  timeZone: 'UTC',
+  timeZone: 'Asia/Kolkata',
 });
-
 
 export const getAlertText = (alert: Alert) => {
   const condition = alert.alertType === 'upper' ? '>' : '<';
   return `Price ${condition} ${formatPrice(alert.threshold)}`;
 };
 
-export const getFormattedTodayDate = () => new Date().toLocaleDateString('en-US', {
+export const getFormattedTodayDate = () => new Date().toLocaleDateString('en-IN', {
   weekday: 'long',
   year: 'numeric',
   month: 'long',
   day: 'numeric',
-  timeZone: 'UTC',
+  timeZone: 'Asia/Kolkata',
 });
+
+export const formatDateTimeIST = (date: Date | number | string) => {
+  return new Intl.DateTimeFormat('en-IN', {
+    timeZone: 'Asia/Kolkata',
+    dateStyle: 'medium',
+    timeStyle: 'short',
+  }).format(new Date(date));
+};
