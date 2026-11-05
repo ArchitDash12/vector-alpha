@@ -41,6 +41,7 @@ export const MARKET_OVERVIEW_WIDGET_CONFIG = {
     colorTheme: 'dark', // dark mode
     dateRange: '12M', // last 12 months
     locale: 'en', // language
+    timezone: 'Asia/Kolkata',
     largeChartUrl: '', // link to a large chart if needed
     isTransparent: true, // makes background transparent
     showFloatingTooltip: true, // show tooltip on hover
@@ -120,6 +121,7 @@ export const TOP_STORIES_WIDGET_CONFIG = {
     colorTheme: 'dark',
     isTransparent: true,
     locale: 'en',
+    timezone: 'Asia/Kolkata',
     market: 'stock',
     width: '100%',
     height: '600',
@@ -130,6 +132,7 @@ export const MARKET_DATA_WIDGET_CONFIG = {
     width: '100%',
     height: 600,
     locale: 'en',
+    timezone: 'Asia/Kolkata',
     showSymbolLogo: true,
     colorTheme: 'dark',
     isTransparent: false,
@@ -194,7 +197,7 @@ export const CANDLE_CHART_WIDGET_CONFIG = (symbol: string) => ({
     style: 1,
     symbol: symbol.toUpperCase(),
     theme: 'dark',
-    timezone: 'Etc/UTC',
+    timezone: 'Asia/Kolkata',
     backgroundColor: '#141414',
     gridColor: '#141414',
     watchlist: [],
@@ -220,7 +223,7 @@ export const BASELINE_WIDGET_CONFIG = (symbol: string) => ({
     style: 10,
     symbol: symbol.toUpperCase(),
     theme: 'dark',
-    timezone: 'Etc/UTC',
+    timezone: 'Asia/Kolkata',
     backgroundColor: '#141414',
     gridColor: '#141414',
     watchlist: [],
@@ -236,6 +239,7 @@ export const TECHNICAL_ANALYSIS_WIDGET_CONFIG = (symbol: string) => ({
     colorTheme: 'dark',
     isTransparent: 'true',
     locale: 'en',
+    timezone: 'Asia/Kolkata',
     width: '100%',
     height: 400,
     interval: '1h',

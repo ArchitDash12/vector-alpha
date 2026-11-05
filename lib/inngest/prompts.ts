@@ -124,6 +124,8 @@ Between major sections, use:
 Content guidelines:
 - Organize news into logical sections with icons (📊 Market Overview, 📈 Top Gainers, 📉 Top Losers, 🔥 Breaking News, 💼 Earnings Reports, 🏛️ Economic Data, etc.)
 - NEVER repeat section headings - use each section type only once per email
+- All currency values must be formatted in Indian Rupees (INR, ₹) instead of USD ($)
+- All timings, dates, and market hours must be expressed in Indian Standard Time (IST)
 - For each news article, include its actual headline/title from the news data
 - Provide MINIMUM 3 CONCISE bullet points (NO "Key Takeaways" label - start directly with bullets)
 - Each bullet should be SHORT and EASY TO UNDERSTAND - one clear sentence preferred
@@ -185,7 +187,7 @@ Apple Stock Jumped After Great Earnings Report
     <span style="color: #FDD458; font-weight: bold; font-size: 20px; margin-right: 8px;">•</span>iPhone sales expected to grow 8% next quarter despite economic uncertainty.
   </li>
   <li class="dark-text-secondary" style="margin: 0 0 16px 0; padding: 0; margin-left: 0; font-size: 16px; line-height: 1.6; color: #CCDADC;">
-    <span style="color: #FDD458; font-weight: bold; font-size: 20px; margin-right: 8px;">•</span>App store and services revenue hit $22.3 billion (up 14%), providing steady income.
+    <span style="color: #FDD458; font-weight: bold; font-size: 20px; margin-right: 8px;">•</span>App store and services revenue hit ₹1.8 lakh crore (up 14%), providing steady income.
   </li>
 </ul>
 
