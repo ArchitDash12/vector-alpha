@@ -17,7 +17,7 @@ import Link from "next/link";
 import { NAV_ITEMS } from "@/lib/constants";
 import { signOut } from "@/lib/actions/auth.actions";
 
-const UserDropdown = ({ user }: { user: User }) => {
+const UserDropdown = ({ user, initialStocks }: { user: User, initialStocks: StockWithWatchlistStatus[] }) => {
   const router = useRouter();
   const pathname = usePathname();
 
