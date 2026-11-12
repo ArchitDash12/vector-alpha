@@ -3,12 +3,9 @@
 import { useEffect, useState } from "react";
 import { Loader2, Star, TrendingUp } from "lucide-react";
 import {
-  Command,
   CommandDialog,
   CommandEmpty,
-  CommandGroup,
   CommandInput,
-  CommandItem,
   CommandList,
 } from "@/components/ui/command";
 import { Button } from "./ui/button";
